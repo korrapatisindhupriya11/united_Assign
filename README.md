@@ -39,19 +39,38 @@ No API key is required. Copy `.env.example` to `.env` only if you want to change
 
 ## Run
 
-From the project root, with the virtual environment active:
+Do this every time you want to use the app. Setup only creates the environment. The chat page stays down until the server is running in a window you leave open.
+
+Windows PowerShell, from the project folder:
 
 ```powershell
+cd C:\Users\sindh\OneDrive\Desktop\UHG_assign\united_Assign
+.\.venv\Scripts\Activate.ps1
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
-Open [http://127.0.0.1:8000](http://127.0.0.1:8000).
+The prompt should change to `(.venv)` after activation. Wait until the terminal prints `Uvicorn running on http://127.0.0.1:8000`, then open [http://127.0.0.1:8000](http://127.0.0.1:8000). Stop the server with Ctrl+C.
+
+If activation is blocked by an execution policy, run this once and activate again:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+macOS or Linux, from the project folder:
+
+```bash
+source .venv/bin/activate
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
 
 With the default `LLM_BACKEND=auto`, the app uses a local Hugging Face model when `transformers` is installed and otherwise quotes the handbook directly. The quote mode is enough to try every sample question. The page says which mode is active.
 
-One question from the terminal:
+One question from the terminal, in a second window with the same environment activated:
 
 ```powershell
+cd C:\Users\sindh\OneDrive\Desktop\UHG_assign\united_Assign
+.\.venv\Scripts\Activate.ps1
 python -m app.cli "Summarize our leave policy."
 ```
 
@@ -64,7 +83,11 @@ pip install torch --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements-llm.txt
 ```
 
+Activate the environment, then start the server with the model selected:
+
 ```powershell
+cd C:\Users\sindh\OneDrive\Desktop\UHG_assign\united_Assign
+.\.venv\Scripts\Activate.ps1
 $env:LLM_BACKEND = "transformers"
 $env:LLM_MODEL = "google/flan-t5-small"
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
@@ -72,17 +95,23 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 
 The first chat request downloads `google/flan-t5-small` from Hugging Face (a few hundred megabytes) into the local cache. Later requests reuse it. Generation on CPU can take up to the timeout (`GENERATION_TIMEOUT_SECONDS`, default 90). If the download or the generation fails, the API still answers from the handbook and sets `degraded` to true.
 
-Ollama is optional. Install it separately, pull a model, then:
+Ollama is optional. Install it separately, pull a model, then activate the environment and start the server:
 
 ```powershell
+cd C:\Users\sindh\OneDrive\Desktop\UHG_assign\united_Assign
+.\.venv\Scripts\Activate.ps1
 $env:LLM_BACKEND = "ollama"
 $env:OLLAMA_MODEL = "llama3.2"
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
-To force quotations even when a model library is installed:
+To force quotations even when a model library is installed, activate the environment and start the server with:
 
 ```powershell
+cd C:\Users\sindh\OneDrive\Desktop\UHG_assign\united_Assign
+.\.venv\Scripts\Activate.ps1
 $env:LLM_BACKEND = "extractive"
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
 ## Try these
@@ -144,7 +173,7 @@ tests/          Unit tests and the golden question list
 
 ## Written notes
 
-- [Architecture](docs/ARCHITECTURE.md)
+- [Architecture](docs/ARCHITECTURE.png)
 - [Prompt design and tools](docs/PROMPT_DESIGN.md)
 - [Accuracy and limitations](docs/ACCURACY_AND_LIMITATIONS.md)
 - [Responsible AI and governance](docs/RESPONSIBLE_AI.md)
@@ -152,4 +181,4 @@ tests/          Unit tests and the golden question list
 
 ## Assumptions
 
-English only, one shared handbook, no login, and sessions that vanish when the process stops. Scaling notes for a larger corpus, more users, and stricter access control are in the architecture and design notes.
+English only, one shared handbook, no login, and sessions that vanish when the process stops. Scaling notes for a larger corpus, more users, and stricter access control are in the design notes.
