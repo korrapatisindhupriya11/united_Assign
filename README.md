@@ -15,7 +15,7 @@ The handbook in `data/policies` is original synthetic text. It is not a real emp
 
 ## Setup
 
-Use Python 3.11 or newer.
+Open a terminal in the folder where you cloned this repository. The commands below assume that folder is the current directory. Use Python 3.11 or newer.
 
 Windows PowerShell:
 
@@ -39,12 +39,11 @@ No API key is required. Copy `.env.example` to `.env` only if you want to change
 
 ## Run
 
-Do this every time you want to use the app. Setup only creates the environment. The chat page stays down until the server is running in a window you leave open.
+Do this every time you want to use the app, from the cloned project folder. Setup only creates the environment. The chat page stays down until the server is running in a window you leave open.
 
-Windows PowerShell, from the project folder:
+Windows PowerShell:
 
 ```powershell
-cd C:\Users\sindh\OneDrive\Desktop\UHG_assign\united_Assign
 .\.venv\Scripts\Activate.ps1
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
@@ -69,7 +68,6 @@ With the default `LLM_BACKEND=auto`, the app uses a local Hugging Face model whe
 One question from the terminal, in a second window with the same environment activated:
 
 ```powershell
-cd C:\Users\sindh\OneDrive\Desktop\UHG_assign\united_Assign
 .\.venv\Scripts\Activate.ps1
 python -m app.cli "Summarize our leave policy."
 ```
@@ -86,7 +84,6 @@ pip install -r requirements-llm.txt
 Activate the environment, then start the server with the model selected:
 
 ```powershell
-cd C:\Users\sindh\OneDrive\Desktop\UHG_assign\united_Assign
 .\.venv\Scripts\Activate.ps1
 $env:LLM_BACKEND = "transformers"
 $env:LLM_MODEL = "google/flan-t5-small"
@@ -98,7 +95,6 @@ The first chat request downloads `google/flan-t5-small` from Hugging Face (a few
 Ollama is optional. Install it separately, pull a model, then activate the environment and start the server:
 
 ```powershell
-cd C:\Users\sindh\OneDrive\Desktop\UHG_assign\united_Assign
 .\.venv\Scripts\Activate.ps1
 $env:LLM_BACKEND = "ollama"
 $env:OLLAMA_MODEL = "llama3.2"
@@ -108,7 +104,6 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 To force quotations even when a model library is installed, activate the environment and start the server with:
 
 ```powershell
-cd C:\Users\sindh\OneDrive\Desktop\UHG_assign\united_Assign
 .\.venv\Scripts\Activate.ps1
 $env:LLM_BACKEND = "extractive"
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
