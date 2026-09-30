@@ -1,0 +1,6 @@
+# Optional generative backend. The app runs without these using extractive answers.
+# On CPU-only machines, install torch from the CPU index first:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+transformers>=4.44
+sentencepiece>=0.2
+torch>=2.2
