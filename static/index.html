@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Harborline Guide — internal policy copilot</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#question">Skip to the question box</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <p class="mark"><span aria-hidden="true">H</span> Harborline</p>
+        <div>
+          <h1>Guide</h1>
+          <p class="tagline">Internal handbook copilot. Answers stay inside the published policies.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="side" aria-label="Handbook context">
+        <section>
+          <h2>Try a question</h2>
+          <ul class="prompts">
+            <li><button type="button" data-question="Summarize our leave policy.">Summarize our leave policy.</button></li>
+            <li><button type="button" data-question="What is the escalation process for incidents?">What is the escalation process for incidents?</button></li>
+            <li><button type="button" data-question="Find information about onboarding steps.">Find information about onboarding steps.</button></li>
+            <li><button type="button" data-question="Can I work from another country for three months?">Can I work from another country for three months?</button></li>
+            <li><button type="button" data-question="What is our sabbatical policy?">What is our sabbatical policy?</button></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Loaded policies</h2>
+          <ul class="topics">
+            <li>Leave and Time Off</li>
+            <li>Onboarding</li>
+            <li>Incident Escalation</li>
+            <li>Remote and Hybrid Work</li>
+            <li>Performance Reviews</li>
+            <li>Expenses and Travel</li>
+            <li>Workplace Conduct</li>
+            <li>Benefits Overview</li>
+          </ul>
+        </section>
+        <details>
+          <summary>Accuracy and limits</summary>
+          <p>
+            Harborline is a fictional company. This handbook is synthetic. The assistant can miss a section,
+            quote the wrong passage, or refuse a question that is actually covered. It does not approve leave,
+            declare incidents, or decide pay. Use Helpful or Not helpful so a reviewer can check the log.
+          </p>
+        </details>
+        <p id="health" class="health">Checking the local service…</p>
+      </aside>
+
+      <main class="chat">
+        <div id="status" class="status" role="status"></div>
+        <div id="error" class="error" role="alert" hidden></div>
+        <div id="transcript" class="transcript" role="log" aria-live="polite" aria-relevant="additions" aria-busy="false">
+          <article class="message assistant welcome">
+            <h2 class="visually-hidden">Welcome</h2>
+            <div class="bubble">
+              Ask about leave, onboarding, incidents, remote work, reviews, expenses, conduct, or benefits.
+              I will show the handbook excerpts behind the answer. If the handbook does not cover it, I will say so.
+            </div>
+          </article>
+        </div>
+
+        <form id="composer" class="composer">
+          <label for="question">Ask about a Harborline policy</label>
+          <textarea
+            id="question"
+            name="question"
+            rows="3"
+            required
+            maxlength="2000"
+            placeholder="Example: How many weeks of parental leave are offered?"
+            aria-describedby="composer-hint"
+          ></textarea>
+          <p id="composer-hint" class="hint">Enter to send. Shift+Enter for a new line.</p>
+          <div class="actions">
+            <button id="send" type="submit">Send</button>
+            <button id="clear" type="button">New chat</button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <noscript>
+      <p class="noscript">This page needs JavaScript for the chat. From the project folder you can run <code>python -m app.cli "Summarize our leave policy."</code></p>
+    </noscript>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
