@@ -1,0 +1,62 @@
+[
+  {
+    "question": "Summarize our leave policy.",
+    "expect_doc": "leave-and-time-off",
+    "should_answer": true
+  },
+  {
+    "question": "What is the escalation process for incidents?",
+    "expect_doc": "incident-escalation",
+    "should_answer": true
+  },
+  {
+    "question": "Find information about onboarding steps.",
+    "expect_doc": "onboarding",
+    "should_answer": true
+  },
+  {
+    "question": "How many weeks of parental leave are offered?",
+    "expect_doc": "leave-and-time-off",
+    "should_answer": true
+  },
+  {
+    "question": "How do I submit a travel expense over 1000 dollars?",
+    "expect_doc": "expenses-and-travel",
+    "should_answer": true
+  },
+  {
+    "question": "Can I work from another country for three months?",
+    "expect_doc": "remote-and-hybrid-work",
+    "should_answer": true
+  },
+  {
+    "question": "What is the performance rating scale?",
+    "expect_doc": "performance-reviews",
+    "should_answer": true
+  },
+  {
+    "question": "What is the CEO's salary?",
+    "expect_doc": "benefits-overview",
+    "should_answer": true
+  },
+  {
+    "question": "How much PTO do I get?",
+    "expect_doc": "leave-and-time-off",
+    "should_answer": true
+  },
+  {
+    "question": "What is our sabbatical policy?",
+    "expect_doc": null,
+    "should_answer": false
+  },
+  {
+    "question": "How do I reset my Netflix password?",
+    "expect_doc": null,
+    "should_answer": false
+  },
+  {
+    "question": "What is the weather in Boston tomorrow?",
+    "expect_doc": null,
+    "should_answer": false
+  }
+]
